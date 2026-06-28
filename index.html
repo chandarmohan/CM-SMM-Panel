@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CM SMM PANEL</title>
-    <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /*--- Global Reset & Mobile App View ---*/
@@ -74,25 +73,26 @@
             overflow: hidden;
         }
 
-        /*--- Exact Custom Coin Structure ---*/
+        /*--- Optimized Custom Coin Structure for Mobile ---*/
         .coins-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #121212;
+            top: 15px;
+            right: 15px;
+            background: #1a1a1a;
             border: 1px solid #c5a059; 
-            padding: 4px 16px 4px 5px; 
+            padding: 4px 10px 4px 4px; 
             border-radius: 50px;       
             display: flex;
             align-items: center;
-            gap: 10px;
-            z-index: 10;
+            gap: 6px;
+            z-index: 100; /* Panel heading ke upar rakhne ke liye */
             display: none; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
         
         .custom-coin-icon {
-            width: 28px;
-            height: 28px;
+            width: 22px; /* Size chota kiya gaya hai */
+            height: 22px;
             background: linear-gradient(135deg, #dfba6b, #b38e45);
             border-radius: 50%;
             display: flex;
@@ -100,13 +100,13 @@
             align-items: center;
             font-weight: 900;
             color: #000000; 
-            font-size: 16px;
+            font-size: 13px;
             font-family: 'Georgia', serif;
-            box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.4);
         }
 
         .coin-amount {
-            font-size: 18px;
+            font-size: 14px; /* Text size chota kiya gaya hai */
             font-weight: bold;
             color: #ffffff;
             letter-spacing: 0.5px;
@@ -178,18 +178,19 @@
         }
         
         .panel-header {
-            text-align: center;
+            text-align: left; /* Mobile layout me left align behter lagta hai */
             border-bottom: 1px solid #2a2a2a;
             padding-bottom: 15px;
-            margin-top: 10px;
+            margin-top: 5px;
             margin-bottom: 15px;
+            padding-right: 95px; /* Coin badge ke liye space chhoda hai */
         }
         .panel-header h1 {
-            font-size: 28px;
+            font-size: 22px; /* Text overlap na ho isliye heading thodi choti ki hai */
             font-weight: 800;
         }
         .panel-header p {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
             margin-top: 5px;
         }
@@ -403,13 +404,11 @@
 
 <div class="panel-container">
     
-    <!-- MATCHING COIN STRUCTURE -->
     <div class="coins-badge" id="user-coins">
         <div class="custom-coin-icon">C</div>
         <span class="coin-amount" id="coin-txt">0</span>
     </div>
 
-    <!-- CUSTOM PREMIUM POPUP ALERT -->
     <div class="premium-popup" id="order-popup">
         <div class="popup-icon">
             <i class="fas fa-check"></i>
@@ -420,7 +419,6 @@
         </div>
     </div>
 
-    <!-- 1. FULL SCREEN LOGIN SCREEN -->
     <div id="login-screen">
         <div class="login-header">
             <h2 class="shimmer-text">CHIEF USER LOGIN</h2>
@@ -438,16 +436,13 @@
         <button class="gold-btn login-btn" id="login-btn-txt" onclick="handleLogin()">Secure Login</button>
     </div>
 
-    <!-- 2. FULL SCREEN MAIN SMM PANEL -->
     <div id="main-panel">
         <div>
-            <!-- Header Fixed at Top -->
             <div class="panel-header">
                 <h1 class="shimmer-text">CM SMM PANEL</h1>
                 <p>Welcome: <span id="user-display-name">...</span> <i class="fas fa-user-shield" style="font-size:12px;"></i></p>
             </div>
             
-            <!-- Instagram URL Target Input Option -->
             <div class="url-section">
                 <div class="section-title">Enter Your Instagram URL</div>
                 <div class="url-group">
@@ -459,11 +454,9 @@
             <div class="section-title">Order Service</div>
         </div>
 
-        <!-- Scrollable Body Section -->
         <div class="scrollable-services">
             <div class="services-container">
                 
-                <!-- 1. Instagram Follower -->
                 <div class="service-item">
                     <div class="service-header" onclick="toggleAccordion(this)">
                         <div class="service-title-left">
@@ -496,7 +489,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Instagram Like -->
                 <div class="service-item">
                     <div class="service-header" onclick="toggleAccordion(this)">
                         <div class="service-title-left">
@@ -529,7 +521,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Instagram Comment -->
                 <div class="service-item">
                     <div class="service-header" onclick="toggleAccordion(this)">
                         <div class="service-title-left">
@@ -562,7 +553,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Instagram View -->
                 <div class="service-item">
                     <div class="service-header" onclick="toggleAccordion(this)">
                         <div class="service-title-left">
@@ -587,7 +577,6 @@
                     </div>
                 </div>
 
-                <!-- LOGOUT BUTTON (Centered underneath VIEW service) -->
                 <div class="logout-container">
                     <button class="logout-btn" onclick="handleLogOut()">
                         <i class="fas fa-sign-out-alt"></i> Log Out
@@ -597,12 +586,10 @@
             </div>
         </div>
 
-        <!-- Pinned Bottom Button -->
         <button class="gold-btn confirm-btn" onclick="confirmOrder()">Confirm Order</button>
     </div>
 </div>
 
-<!-- Firebase Modular SDK Scripts -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -631,10 +618,9 @@
     let selectedServiceText = "";
     let coinListenerUnsubscribe = null;
 
-    // AUTO LOGIN CHECK: यूजर रिफ्रेश करे तो लॉगिन बना रहे (Session Management)
+    // AUTO LOGIN CHECK: सेशन मैनेजमेंट
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // अगर पहले से लोकल स्टोरेज में नाम सेव है तो वो ले लें, नहीं तो ईमेल से निकालें
             const savedName = localStorage.getItem("cm_saved_username");
             if (savedName) {
                 loggedInUsername = savedName;
@@ -701,7 +687,7 @@
 
         signInWithEmailAndPassword(auth, fullEmail, passInp)
             .then(() => {
-                // onAuthStateChanged अपने आप मुख्य स्क्रीन पर ले जाएगा
+                // onAuthStateChanged handle karega screen switch
             })
             .catch((error) => {
                 loginBtn.innerText = "Secure Login";
@@ -723,7 +709,7 @@
         }
     }
 
-    // Highlighting and Selection Logic
+    // Selection Logic
     window.selectService = function(element, price) {
         document.querySelectorAll('.price-row').forEach(row => {
             row.style.background = 'transparent';
@@ -736,7 +722,7 @@
         selectedServiceText = element.querySelector('span:not(.coins)').innerText;
     }
 
-    // Confirm Order with Live Admin Tracking & Auto-Hide Popup
+    // Confirm Order
     window.confirmOrder = function() {
         const urlInput = document.getElementById('insta-url').value.trim();
         
@@ -755,13 +741,10 @@
         }
 
         const newCoinsAmount = userCurrentCoins - selectedPrice;
-
-        // वर्तमान तारीख और लाइव टाइम निकालना
         const currentDateTime = new Date();
-        const orderDate = currentDateTime.toLocaleDateString('en-GB'); // Format: DD/MM/YYYY
+        const orderDate = currentDateTime.toLocaleDateString('en-GB'); 
         const orderTime = currentDateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-        // आर्डर की डिटेल्स तैयार करना
         const orderDetails = {
             username: loggedInUsername,
             instagram_url: urlInput,
@@ -772,21 +755,16 @@
             timestamp: Date.now()
         };
 
-        // 1. डेटाबेस में आर्डर को ट्रैक करना ('orders' नाम का फोल्डर एडमिन के लिए लाइव बनेगा)
         const ordersRef = ref(database, 'orders');
         const newOrderPushRef = push(ordersRef);
         
         set(newOrderPushRef, orderDetails)
             .then(() => {
-                // 2. यूजर के कॉइन्स को लाइव डिटेक्ट करना
                 return set(ref(database, 'users/' + loggedInUsername + '/coins'), newCoinsAmount);
             })
             .then(() => {
-                // 3. प्रीमियम ऑटो-हाइड पॉपअप शो करना (2 सेकंड के लिए)
                 const popup = document.getElementById('order-popup');
                 popup.classList.add('show');
-                
-                // इनपुट बॉक्स और सिलेक्शन क्लियर करना
                 document.getElementById('insta-url').value = "";
                 
                 setTimeout(() => {
